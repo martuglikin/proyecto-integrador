@@ -1,5 +1,6 @@
 import { Component } from "react";
 import './Header.css'
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 
 class Header extends Component {
@@ -15,13 +16,13 @@ class Header extends Component {
             <nav>
                 <ul class="nav nav-tabs my-4">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <Link class= "nav-link" to="/"> Home </Link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="movies.html">Películas</a>
+                        <Link class= "nav-link" to="/peliculas/:tipo"> Películas </Link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="series.html">Series</a>
+                        <Link class= "nav-link" to="/series/:tipo"> Series </Link>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="favorites.html">Favoritas</a>
