@@ -1,7 +1,7 @@
 import { Component } from "react";
 import Header from "../../Components/Header/Header";
 import ListaCards from "../../Components/ListaCards/ListaCards";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 let api_key = "726d3c7dadcda94f9c6c2ceccbd8737a"
 

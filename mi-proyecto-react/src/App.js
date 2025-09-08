@@ -9,7 +9,6 @@ export default function App() {
     <div className="App">
       <Switch>
         <Route path="/" exact={true} component={Home}/>
-
         <Route path="" component={NotFound}/>
       </Switch>
     </div>
