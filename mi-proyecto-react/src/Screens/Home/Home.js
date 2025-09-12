@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Header from "../../Components/Header/Header";
 import ListaCards from "../../Components/ListaCards/ListaCards";
+import Footer from "../../Components/Footer/Footer";
 import { Link } from 'react-router-dom';
 
 let api_key = "726d3c7dadcda94f9c6c2ceccbd8737a"
@@ -63,12 +64,16 @@ class Home extends Component {
             <h2 className="alert alert-primary">Now playing movies this week <button className="btn btn-primary"> <Link to='/peliculas/now_playing'>Ver Más</Link></button></h2>
             {this.state.loadingnowMovies ? <p>Cargando...</p> : <ListaCards tipo="movie" data={this.state.nowMovies.slice(0,5)} />}
 
-            <h2 className="alert alert-primary">Popular series this week</h2>
+            <h2 className="alert alert-primary">Popular series this week<button className="btn btn-primary"> <Link to='/series/popular'>Ver Más</Link></button></h2>
             {this.state.loadingpopularSeries ? <p>Cargando...</p> : <ListaCards tipo="tv" data={this.state.popularSeries.slice(0,5)} />}
 
-            <h2 className="alert alert-primary">Airing today series</h2>
+            <h2 className="alert alert-primary">Airing today series<button className="btn btn-primary"> <Link to='/series/airing_today'>Ver Más</Link></button></h2>
             {this.state.loadingtodaySeries ? <p>Cargando...</p> : <ListaCards tipo="tv" data={this.state.todaySeries.slice(0,5)} />}
+
+            <Footer />
         </div>
+
+        
         )
     }
 

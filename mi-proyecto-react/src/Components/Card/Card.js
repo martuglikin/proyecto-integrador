@@ -27,6 +27,7 @@ class Card extends Component {
         }
     }
 
+    //en el componentDidMountmanejar el mensaje de agregar o borrar
 
     render() {
         return (
@@ -54,7 +55,7 @@ class Card extends Component {
                         {this.state.verDescripcion? <p className="card-text">{this.props.data.overview}</p> : ''}
 
                         <Link to={`/detalle/tv/${this.props.data.id}`} className="btn btn-primary">Ver más</Link>
-                        <a href="" className="btn alert-primary">🩶</a>
+                        <a href="" className="btn alert-primary">🩶</a> {/*este es el boton favoritos, aca va el onclikc*/} 
                     </div>
                 </article>
             )}

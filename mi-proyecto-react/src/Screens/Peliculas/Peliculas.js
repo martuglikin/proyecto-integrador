@@ -73,7 +73,7 @@ class Peliculas extends Component {
 
                     {this.state.loadingMovies ? <p>Cargando...</p> : (
                         <React.Fragment>
-                            <h2 class="alert alert-primary">Popular movies this week </h2>
+                            <h2 class="alert alert-primary">{this.props.match.params.tipo == 'popular' ? 'Popular movies this week' : 'Now playing movies this week'}</h2>
                             <ListaCards tipo="movie" data={this.state.dataFiltrada} />
                         </React.Fragment>
                     )}

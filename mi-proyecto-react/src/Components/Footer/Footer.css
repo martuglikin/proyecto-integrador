@@ -7,3 +7,50 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+h1{
+    font-size: 30px;
+}
+
+.main-footer {
+  background-color: #ffffff;
+  padding: 20px 0;
+  margin-top: 80px;
+}
+
+.footer-data {
+  text-align: center;
+}
+
+.footer-data i {
+  color: var(--light-blue);
+  font-size: 3.5em;
+}
+
+.footer-data h2 {
+  color: var(--gray);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.footer-icon {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-top: 10px;
+}
+
+.footer-title{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  color: var(--gray);
+  font-weight: 500;
+}
+
+.linea-divisoria {
+  height: 2px;
+  background-color: #ccc;
+  width: 100%;
+  margin: 20px 0;
+}

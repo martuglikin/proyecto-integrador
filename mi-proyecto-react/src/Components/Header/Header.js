@@ -13,16 +13,23 @@ class Header extends Component {
 
     render() {
         return (
+
             <nav>
-                <ul class="nav nav-tabs my-4">
+                <ul className="nav nav-tabs d-flex justify-content-around my-4">
                     <li class="nav-item">
                         <Link class= "nav-link" to="/"> Home </Link>
                     </li>
                     <li class="nav-item">
-                        <Link class= "nav-link" to="/peliculas/:tipo"> Películas </Link>
+                        <a class= "nav-link" href="/peliculas/popular"> Popular Movies </a>
                     </li>
                     <li class="nav-item">
-                        <Link class= "nav-link" to="/series/:tipo"> Series </Link>
+                        <a class= "nav-link" href="/peliculas/now_playing"> Now Playing Movies </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class= "nav-link" href="/series/popular"> Popular Series </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class= "nav-link" href="/series/airing_today"> Airing Today Series </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="favorites.html">Favoritas</a>
@@ -33,6 +40,7 @@ class Header extends Component {
                     <button type="submit" class="btn btn-success btn-sm">Buscar</button>
                 </form>
             </nav>
+
         )
     }
 }

@@ -17,20 +17,19 @@ class Series extends Component {
         }
     }
 
-
     componentDidMount() {
         if (this.props.match.params.tipo == 'popular') {
             fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${api_key}`)
             .then(res => res.json())
             .then(data => {
-                this.setState({series: data.results, loadingSeries: false})
+                this.setState({series: data.results, loadingSeries: false, dataFiltrada: data.results})
             })
 
         } else {
             fetch(`https://api.themoviedb.org/3/tv/airing_today?api_key=${api_key}`)
             .then(res => res.json())
             .then(data => {
-                this.setState({series: data.results, loadingSeries: false})
+                this.setState({series: data.results, loadingSeries: false, dataFiltrada: data.results})
             })
         }
     } 
@@ -70,7 +69,7 @@ class Series extends Component {
 
                     {this.state.loadingSeries ? <p>Cargando...</p> : (
                         <React.Fragment>
-                            <h2 class="alert alert-primary">Popular series this week </h2>
+                            <h2 class="alert alert-primary">{this.props.match.params.tipo == 'popular' ? 'Popular series this week' : 'Airing today series this week'}</h2>
                             <ListaCards tipo= "tv" data={this.state.dataFiltrada} />
                         </React.Fragment>
                     )}
