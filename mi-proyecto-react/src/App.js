@@ -5,6 +5,7 @@ import NotFound from './Screens/NotFound/NotFound';
 import Detalle from './Screens/Detalle/Detalle';
 import Peliculas from './Screens/Peliculas/Peliculas';
 import Series from './Screens/Series/Series';
+import Favoritos from './Screens/Favoritos/Favoritos'
 
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
     <div className="App">
       <Switch>
         <Route path="/" exact={true} component={Home}/>
+        <Route path="/favoritos" exact={true} component={Favoritos}/>
         <Route path='/detalle/:tipo/:id' exact={true} component={Detalle}/>
         <Route path="/peliculas/:tipo" exact={true} component={Peliculas}/>
         <Route path="/series/:tipo" exact={true} component={Series}/>

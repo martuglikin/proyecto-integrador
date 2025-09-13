@@ -9,7 +9,8 @@ class Card extends Component {
         super(props);
         this.state = {
             verDescripcion: false,
-            textoBoton: 'Ver Descripción'
+            textoBoton: 'Ver Descripción',
+            textoFav: '🩶'
         }
     }
 
@@ -27,6 +28,71 @@ class Card extends Component {
         }
     }
 
+    componentDidMount(){
+        if(this.props.tipo == 'movie'){
+        let pelisFavoritas = JSON.parse(localStorage.getItem('favoritos')); // JSON.parse para pasarlo de str
+        console.log(pelisFavoritas)  
+        if (pelisFavoritas !== null && pelisFavoritas.includes(this.props.data.id)) {
+            this.setState({ textoFav: '❤️' });
+        } else {
+            this.setState({ textoFav: '🩶' });
+    }
+}
+        if (this.props.tipo == 'tv'){
+        let seriesFavoritas = JSON.parse(localStorage.getItem('favoritosSeries')); // JSON.parse para pasarlo de str
+        console.log(seriesFavoritas)  
+        if (seriesFavoritas !== null && seriesFavoritas.includes(this.props.data.id)) {
+            this.setState({ textoFav: '❤️' });
+        } else {
+            this.setState({ textoFav: '🩶' });
+    }
+        }
+
+  }
+    
+
+    manejarFavPeliculas() {
+        let pelisFavoritas = JSON.parse(localStorage.getItem('favoritos')); 
+        if (pelisFavoritas == null){
+            pelisFavoritas = [];
+        }
+        if (pelisFavoritas.includes(this.props.data.id)){ //Si ya esta, lo quiero sacar
+            pelisFavoritas = pelisFavoritas.filter(unId => {
+                return unId !== this.props.data.id;
+        })
+
+        console.log(pelisFavoritas)
+
+        this.setState({textoFav: '🩶'})
+        }else{
+            pelisFavoritas.push(this.props.data.id)
+        this.setState({textoFav: '❤️'})
+        }
+        localStorage.setItem('favoritos', JSON.stringify(pelisFavoritas))
+}
+manejarFavSeries() {
+        let seriesFavoritas = JSON.parse(localStorage.getItem('favoritosSeries')); 
+        if (seriesFavoritas == null){
+            seriesFavoritas = [];
+        }
+        if (seriesFavoritas.includes(this.props.data.id)){ //Si ya esta, lo quiero sacar
+            seriesFavoritas = seriesFavoritas.filter(unId => {
+                return unId !== this.props.data.id;
+        })
+
+        console.log(seriesFavoritas)
+
+        this.setState({textoFav: '🩶'})
+        }else{
+            seriesFavoritas.push(this.props.data.id)
+        this.setState({textoFav: '❤️'})
+        }
+        localStorage.setItem('favoritosSeries', JSON.stringify(seriesFavoritas))
+}
+
+
+
+
     //en el componentDidMountmanejar el mensaje de agregar o borrar
 
     render() {
@@ -42,7 +108,7 @@ class Card extends Component {
                         {this.state.verDescripcion? <p className="card-text">{this.props.data.overview}</p> : ''}
 
                         <Link to={`detalle/movie/${this.props.data.id}`} className="btn btn-primary">Ver más</Link>
-                        <a href="" className="btn alert-primary">🩶</a>
+                        <button className="btn alert-primary" onClick={()=> this.manejarFavPeliculas()}>{this.state.textoFav}</button> 
                     </div>
                 </article>
             ) : (
@@ -55,7 +121,7 @@ class Card extends Component {
                         {this.state.verDescripcion? <p className="card-text">{this.props.data.overview}</p> : ''}
 
                         <Link to={`/detalle/tv/${this.props.data.id}`} className="btn btn-primary">Ver más</Link>
-                        <a href="" className="btn alert-primary">🩶</a> {/*este es el boton favoritos, aca va el onclikc*/} 
+                        <button className="btn alert-primary" onClick={()=> this.manejarFavSeries()}>{this.state.textoFav}</button> {/*este es el boton favoritos, aca va el onclikc*/} 
                     </div>
                 </article>
             )}

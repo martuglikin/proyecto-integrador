@@ -32,7 +32,7 @@ class Header extends Component {
                         <a class= "nav-link" href="/series/airing_today"> Airing Today Series </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="favorites.html">Favoritas</a>
+                        <Link class= "nav-link" to="/favoritos"> Favoritos </Link>
                     </li>
                 </ul>
                 <form class="search-form" action="results.html" method="get">
