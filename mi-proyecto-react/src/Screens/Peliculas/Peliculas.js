@@ -19,7 +19,7 @@ class Peliculas extends Component {
 
     componentDidMount() {
 
-        if (this.props.match.params.tipo == 'popular') {
+        if (this.props.match.params.tipo === 'popular') {
             fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${api_key}`)
                 .then(res => res.json())
                 .then(data => {
@@ -40,7 +40,7 @@ class Peliculas extends Component {
 
     cargarMas(){
         this.setState({page: this.state.page+1}, () => {
-                fetch(`https://api.themoviedb.org/3/movie/${this.props.match.params.tipo == 'popular' ? 'popular' : 'now_playing'}?api_key=${api_key}&page=${this.state.page}`)
+                fetch(`https://api.themoviedb.org/3/movie/${this.props.match.params.tipo === 'popular' ? 'popular' : 'now_playing'}?api_key=${api_key}&page=${this.state.page}`)
                 .then(res => res.json())
                 .then(data => {
                     this.setState({ movies: this.state.movies.concat(data.results), dataFiltrada: this.state.movies.concat(data.results), loading: false }, () => console.log(data.results))
@@ -62,7 +62,6 @@ class Peliculas extends Component {
         return (
 
             <div div class="container">
-                <h1>UdeSA Movies</h1>
 
                 <Header />
 
@@ -73,7 +72,7 @@ class Peliculas extends Component {
 
                     {this.state.loadingMovies ? <p>Cargando...</p> : (
                         <React.Fragment>
-                            <h2 class="alert alert-primary">{this.props.match.params.tipo == 'popular' ? 'Popular movies this week' : 'Now playing movies this week'}</h2>
+                            <h2 class="alert alert-primary">{this.props.match.params.tipo === 'popular' ? 'Popular movies this week' : 'Now playing movies this week'}</h2>
                             <ListaCards tipo="movie" data={this.state.dataFiltrada} />
                         </React.Fragment>
                     )}

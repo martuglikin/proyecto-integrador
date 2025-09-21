@@ -29,7 +29,7 @@ class Card extends Component {
     }
 
     componentDidMount(){
-        if(this.props.tipo == 'movie'){
+        if(this.props.tipo === 'movie'){
         let pelisFavoritas = JSON.parse(localStorage.getItem('favoritos')); // JSON.parse para pasarlo de str
         console.log(pelisFavoritas)  
         if (pelisFavoritas !== null && pelisFavoritas.includes(this.props.data.id)) {
@@ -38,7 +38,7 @@ class Card extends Component {
             this.setState({ textoFav: '🩶' });
     }
 }
-        if (this.props.tipo == 'tv'){
+        if (this.props.tipo === 'tv'){
         let seriesFavoritas = JSON.parse(localStorage.getItem('favoritosSeries')); // JSON.parse para pasarlo de str
         console.log(seriesFavoritas)  
         if (seriesFavoritas !== null && seriesFavoritas.includes(this.props.data.id)) {
@@ -53,7 +53,7 @@ class Card extends Component {
 
     manejarFavPeliculas() {
         let pelisFavoritas = JSON.parse(localStorage.getItem('favoritos')); 
-        if (pelisFavoritas == null){
+        if (pelisFavoritas === null){
             pelisFavoritas = [];
         }
         if (pelisFavoritas.includes(this.props.data.id)){ //Si ya esta, lo quiero sacar
@@ -69,10 +69,11 @@ class Card extends Component {
         this.setState({textoFav: '❤️'})
         }
         localStorage.setItem('favoritos', JSON.stringify(pelisFavoritas))
-}
-manejarFavSeries() {
+    }
+
+    manejarFavSeries() {
         let seriesFavoritas = JSON.parse(localStorage.getItem('favoritosSeries')); 
-        if (seriesFavoritas == null){
+        if (seriesFavoritas === null){
             seriesFavoritas = [];
         }
         if (seriesFavoritas.includes(this.props.data.id)){ //Si ya esta, lo quiero sacar
@@ -88,7 +89,7 @@ manejarFavSeries() {
         this.setState({textoFav: '❤️'})
         }
         localStorage.setItem('favoritosSeries', JSON.stringify(seriesFavoritas))
-}
+    }
 
 
 
@@ -98,7 +99,7 @@ manejarFavSeries() {
     render() {
         return (
             <React.Fragment>
-            {this.props.tipo == 'movie' ? (
+            {this.props.tipo === 'movie' ? (
                 <article className="single-card">
                     <img src={`https://image.tmdb.org/t/p/w500${this.props.data.poster_path}`} className="card-img-top" alt="..." />
                     <div className="cardBody">

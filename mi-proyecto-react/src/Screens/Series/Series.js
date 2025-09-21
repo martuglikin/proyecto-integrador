@@ -18,7 +18,7 @@ class Series extends Component {
     }
 
     componentDidMount() {
-        if (this.props.match.params.tipo == 'popular') {
+        if (this.props.match.params.tipo === 'popular') {
             fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${api_key}`)
             .then(res => res.json())
             .then(data => {
@@ -36,7 +36,7 @@ class Series extends Component {
 
      cargarMas(){
         this.setState({page: this.state.page+1}, () => {
-                fetch(`https://api.themoviedb.org/3/tv/${this.props.match.params.tipo == 'popular' ? 'popular' : 'airing_today'}?api_key=${api_key}&page=${this.state.page}`)
+                fetch(`https://api.themoviedb.org/3/tv/${this.props.match.params.tipo === 'popular' ? 'popular' : 'airing_today'}?api_key=${api_key}&page=${this.state.page}`)
                 .then(res => res.json())
                 .then(data => {
                     this.setState({ series: this.state.series.concat(data.results), dataFiltrada: this.state.series.concat(data.results), loading: false }, () => console.log(data.results))
@@ -58,7 +58,6 @@ class Series extends Component {
         return (
 
             <div class="container">
-                <h1>UdeSA Movies</h1>
 
                 <Header />
 
@@ -69,7 +68,7 @@ class Series extends Component {
 
                     {this.state.loadingSeries ? <p>Cargando...</p> : (
                         <React.Fragment>
-                            <h2 class="alert alert-primary">{this.props.match.params.tipo == 'popular' ? 'Popular series this week' : 'Airing today series this week'}</h2>
+                            <h2 class="alert alert-primary">{this.props.match.params.tipo === 'popular' ? 'Popular series this week' : 'Airing today series this week'}</h2>
                             <ListaCards tipo= "tv" data={this.state.dataFiltrada} />
                         </React.Fragment>
                     )}

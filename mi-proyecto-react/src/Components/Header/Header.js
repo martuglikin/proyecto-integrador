@@ -14,32 +14,48 @@ class Header extends Component {
     render() {
         return (
 
-            <nav>
-                <ul className="nav nav-tabs d-flex justify-content-around my-4">
-                    <li class="nav-item">
-                        <Link class= "nav-link" to="/"> Home </Link>
-                    </li>
-                    <li class="nav-item">
-                        <a class= "nav-link" href="/peliculas/popular"> Popular Movies </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class= "nav-link" href="/peliculas/now_playing"> Now Playing Movies </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class= "nav-link" href="/series/popular"> Popular Series </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class= "nav-link" href="/series/airing_today"> Airing Today Series </a>
-                    </li>
-                    <li class="nav-item">
-                        <Link class= "nav-link" to="/favoritos"> Favoritos </Link>
-                    </li>
-                </ul>
-                <form class="search-form" action="results.html" method="get">
-                    <input type="text" class="" name="searchData" placeholder="Buscar..." value="" />
-                    <button type="submit" class="btn btn-success btn-sm">Buscar</button>
-                </form>
-            </nav>
+            <div className="container">
+
+                <div className="containerTitulo">
+                <h1>UdeSA Movies</h1>
+                <img src="/images/logoProgra.jpg" class="header-icon"/>
+                </div>
+
+                <nav>
+                    <div className="navbar">
+                        <Link to="/">Home</Link>
+
+                        <div className="dropdown">
+                        <button className="dropbtn">
+                            Ver todo ▾
+                        </button>
+                        <div className="dropdown-content">
+                            <a href="/peliculas/popular">Popular Movies</a>
+                            <a href="/peliculas/now_playing">Now Playing Movies</a>
+                            <a href="/series/popular">Popular Series</a>
+                            <a href="/series/airing_today">Airing Today Series</a>
+                        </div>
+                        </div>
+
+                        <Link to="/favoritos">Favoritos</Link>
+                    </div>
+
+                    <form className="search-form" action="/buscador" method="get">
+                    <input type="text" name="busqueda" placeholder="Buscar..." />
+                    <div className="radio-group">
+                        <label>
+                        <input type="radio" name="tipo" value="movie" /> Movie
+                        </label>
+                        <label>
+                        <input type="radio" name="tipo" value="tv" /> Serie
+                        </label>
+                    </div>
+                    <button type="submit" className="btn btn-success btn-sm">Buscar</button>
+                    </form>
+
+                </nav>
+
+            </div>
 
         )
     }

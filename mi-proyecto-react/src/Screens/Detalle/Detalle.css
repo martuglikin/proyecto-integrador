@@ -1,0 +1,20 @@
+/* Título */
+.genres-title {
+  text-align: center;
+}
+
+/* Contenedor de la lista */
+.genres-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.genres-item {
+  padding: 4px 10px;
+  border-radius: 100000px;
+  background: #f1f3f5;    
+}

@@ -20,12 +20,13 @@ class Favoritos extends Component {
     }
 
 componentDidMount(){
-  let pelisFavoritas  = JSON.parse(localStorage.getItem('favoritos')) ;
-  let seriesFavoritas = JSON.parse(localStorage.getItem('favoritosSeries')) ;
+
+  let pelisFavoritas  = JSON.parse(localStorage.getItem('favoritos')) || [];
+  let seriesFavoritas = JSON.parse(localStorage.getItem('favoritosSeries')) || [];
 
   //sacá nulls si los hubiera
-  pelisFavoritas  = pelisFavoritas.filter(x => x != null);
-  seriesFavoritas = seriesFavoritas.filter(x => x != null);
+  //pelisFavoritas  = pelisFavoritas.filter(x => x != null);
+  //seriesFavoritas = seriesFavoritas.filter(x => x != null);
 
   this.setState({
     limitePeli: pelisFavoritas.length,
@@ -69,22 +70,23 @@ componentDidMount(){
         return (
             <React.Fragment>
                 <Header/>
-                <p>Peliculas Favoritas</p>
-                    {this.state.limitePeli == 0
-                    ? <p>No hay peliculas favoritas.</p>
-                    : (this.state.data ).map((unaPeli, idx) => (
-                        <Card key={idx} data={unaPeli} tipo="movie" />
-                        ))
-                    }
+                <b><p>Peliculas Favoritas:</p></b>
+                {this.state.limitePeli === 0 || this.state.data.length === 0 //muestra el mensaje si no hay IDs o si no llegó ningún dato 
+                  ? <p>No hay peliculas favoritas.</p>
+                  : this.state.data.map((unaPeli) => (
+                      <Card key={unaPeli.id} data={unaPeli} tipo="movie" />
+                    ))
+                }
 
-                    <p>Series Favoritas</p>
-                    {this.state.limiteSerie == 0
+                  <b><p>Series Favoritas:</p></b>
+                    {this.state.limiteSerie === 0
                     ? <p>No hay series favoritas.</p>
                     : (this.state.dataSerie ).map((unaSerie, idx) => (
                         <Card key={idx} data={unaSerie} tipo="tv" />
                         ))
                     }
 
+                    <Footer />
             </React.Fragment>
         
         )
