@@ -21,12 +21,8 @@ class Favoritos extends Component {
 
 componentDidMount(){
 
-  let pelisFavoritas  = JSON.parse(localStorage.getItem('favoritos')) || [];
-  let seriesFavoritas = JSON.parse(localStorage.getItem('favoritosSeries')) || [];
-
-  //sacá nulls si los hubiera
-  //pelisFavoritas  = pelisFavoritas.filter(x => x != null);
-  //seriesFavoritas = seriesFavoritas.filter(x => x != null);
+  let pelisFavoritas  = JSON.parse(localStorage.getItem('favoritos'));
+  let seriesFavoritas = JSON.parse(localStorage.getItem('favoritosSeries'));
 
   this.setState({
     limitePeli: pelisFavoritas.length,
@@ -38,7 +34,6 @@ componentDidMount(){
     fetch(`https://api.themoviedb.org/3/movie/${unId}?api_key=${api_key}`)
       .then(res => res.json())
       .then(unaPeli => {
-        if (!unaPeli || !unaPeli.id) return; //si la respuesta del fetch vino undefined no sigas.
         const listaMovies = this.state.data;   
         listaMovies.push(unaPeli);             
         this.setState({
@@ -53,7 +48,6 @@ componentDidMount(){
     fetch(`https://api.themoviedb.org/3/tv/${unId}?api_key=${api_key}`)
       .then(res => res.json())
       .then(unaSerie => {
-        if (!unaSerie || !unaSerie.id) return;
         const listaSeries = this.state.dataSerie; 
         listaSeries.push(unaSerie);
         this.setState({
