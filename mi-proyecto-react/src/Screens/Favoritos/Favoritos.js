@@ -21,8 +21,8 @@ class Favoritos extends Component {
 
 componentDidMount(){
 
-  let pelisFavoritas  = JSON.parse(localStorage.getItem('favoritos'));
-  let seriesFavoritas = JSON.parse(localStorage.getItem('favoritosSeries'));
+  let pelisFavoritas  = JSON.parse(localStorage.getItem('favoritos')) || [];
+  let seriesFavoritas = JSON.parse(localStorage.getItem('favoritosSeries')) || [];
 
   this.setState({
     limitePeli: pelisFavoritas.length,

@@ -108,7 +108,7 @@ class Card extends Component {
                         <button className="btn btn-primary" onClick={() => this.alternarValor()}>{this.state.textoBoton}</button>
                         {this.state.verDescripcion? <p className="card-text">{this.props.data.overview}</p> : ''}
 
-                        <Link to={`detalle/movie/${this.props.data.id}`} className="btn btn-primary">Ver más</Link>
+                        <Link to={`/detalle/movie/${this.props.data.id}`} className="btn btn-primary">Ver más</Link>
                         <button className="btn alert-primary" onClick={()=> this.manejarFavPeliculas()}>{this.state.textoFav}</button> 
                     </div>
                 </article>

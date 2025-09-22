@@ -44,7 +44,7 @@ class Series extends Component {
         })
     }
 
-    manejarInput = (e) => {
+    manejarInput(e){
         this.setState({valorInput: e.target.value}, () => {
             let dataFiltrada = this.state.series.filter((unaSerie) => {
                 return unaSerie.name.toLowerCase().includes(this.state.valorInput.toLowerCase())

@@ -48,7 +48,7 @@ class Peliculas extends Component {
         })
     }
 
-    manejarInput = (e) => {
+    manejarInput(e) {
         this.setState({valorInput: e.target.value}, () => {
             let dataFiltrada = this.state.movies.filter((unaPeli) => {
                 return unaPeli.title.toLowerCase().includes(this.state.valorInput.toLowerCase())
